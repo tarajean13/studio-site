@@ -8,7 +8,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "A multidisciplinary design studio creating thoughtful work at the intersection of brand, digital, and motion." } = Astro.props;
+const { title, description = "A multidisciplinary digital studio creating thoughtful work at the intersection of brand, digital, and motion." } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +20,7 @@ const { title, description = "A multidisciplinary design studio creating thought
     <meta name="generator" content={Astro.generator} />
     <link rel="preload" href="/fonts/SpaceGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <title>{title} | Studio</title>
+    <title>{title} | Hyperreality Digital</title>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
