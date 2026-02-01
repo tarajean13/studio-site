@@ -1,0 +1,71 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<button
+  id="mobile-menu-toggle"
+  class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+>
+  <span class="hamburger-line block w-6 h-0.5 bg-primary transition-transform duration-300 origin-center"></span>
+  <span class="hamburger-line block w-6 h-0.5 bg-primary transition-opacity duration-300"></span>
+  <span class="hamburger-line block w-6 h-0.5 bg-primary transition-transform duration-300 origin-center"></span>
+</button>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  {navLinks.map((link) => (
+    <a
+      href={link.href}
+      class:list={[
+        "text-2xl font-heading tracking-wide uppercase transition-colors duration-200",
+        currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+          ? "text-primary"
+          : "text-secondary hover:text-primary",
+      ]}
+    >
+      {link.label}
+    </a>
+  ))}
+</div>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const lines = toggle?.querySelectorAll(".hamburger-line");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+
+    if (!isOpen) {
+      menu?.classList.remove("opacity-0", "pointer-events-none");
+      menu?.classList.add("opacity-100", "pointer-events-auto");
+      if (lines) {
+        lines[0].classList.add("rotate-45", "translate-y-2");
+        lines[1].classList.add("opacity-0");
+        lines[2].classList.add("-rotate-45", "-translate-y-2");
+      }
+      document.body.style.overflow = "hidden";
+    } else {
+      menu?.classList.add("opacity-0", "pointer-events-none");
+      menu?.classList.remove("opacity-100", "pointer-events-auto");
+      if (lines) {
+        lines[0].classList.remove("rotate-45", "translate-y-2");
+        lines[1].classList.remove("opacity-0");
+        lines[2].classList.remove("-rotate-45", "-translate-y-2");
+      }
+      document.body.style.overflow = "";
+    }
+  });
+</script>

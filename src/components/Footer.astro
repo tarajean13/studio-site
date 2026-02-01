@@ -1,0 +1,48 @@
+---
+import NewsletterForm from "./NewsletterForm.astro";
+---
+
+<footer class="border-t border-border bg-background">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      <div>
+        <h3 class="font-heading text-lg font-medium mb-4">Studio</h3>
+        <p class="text-sm text-secondary leading-relaxed">
+          A multidisciplinary design studio creating thoughtful work at the intersection of brand, digital, and motion.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-sm uppercase tracking-wide text-muted mb-4">Stay Updated</h4>
+        <NewsletterForm />
+      </div>
+
+      <div>
+        <h4 class="text-sm uppercase tracking-wide text-muted mb-4">Connect</h4>
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-sm text-secondary hover:text-primary transition-colors">
+            Instagram
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-sm text-secondary hover:text-primary transition-colors">
+            Twitter / X
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-sm text-secondary hover:text-primary transition-colors">
+            LinkedIn
+          </a>
+          <a href="mailto:hello@studio.com" class="text-sm text-secondary hover:text-primary transition-colors">
+            hello@studio.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-muted">
+        &copy; {new Date().getFullYear()} Studio. All rights reserved.
+      </p>
+      <p class="text-xs text-muted">
+        Design &amp; Development by Studio
+      </p>
+    </div>
+  </div>
+</footer>

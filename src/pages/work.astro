@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const sortedProjects = allProjects.sort((a, b) => {
+  if (b.data.year !== a.data.year) return b.data.year - a.data.year;
+  return a.data.order - b.data.order;
+});
+---
+
+<BaseLayout title="Work" description="Selected projects spanning brand identity, web design, editorial, packaging, and motion.">
+  <section class="px-6 lg:px-12 max-w-7xl mx-auto py-16 lg:py-24">
+    <h1 class="text-4xl md:text-5xl font-heading font-medium mb-4">Work</h1>
+    <p class="text-secondary text-lg max-w-2xl mb-16 lg:mb-24">
+      A selection of projects spanning brand identity, digital design, editorial, packaging, environmental graphics, and motion.
+    </p>
+    <ProjectGrid projects={sortedProjects} />
+  </section>
+</BaseLayout>

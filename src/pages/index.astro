@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 4);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="px-6 lg:px-12 max-w-7xl mx-auto py-24 lg:py-40">
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium max-w-4xl leading-[1.05]">
+      We create brands, digital experiences, and visual systems that resonate.
+    </h1>
+    <p class="mt-8 text-lg md:text-xl text-secondary max-w-2xl leading-relaxed">
+      Studio is a multidisciplinary design practice working at the intersection of brand identity, digital design, and motion.
+    </p>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="px-6 lg:px-12 max-w-7xl mx-auto pb-24 lg:pb-40">
+    <div class="flex items-center justify-between mb-12">
+      <h2 class="text-sm uppercase tracking-wide text-muted">Selected Work</h2>
+      <a href="/work" class="text-sm uppercase tracking-wide text-secondary hover:text-primary transition-colors">
+        View All &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {featuredProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          slug={project.id}
+          year={project.data.year}
+          disciplines={project.data.disciplines}
+          thumbnail={project.data.thumbnail}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Studio Intro -->
+  <section class="px-6 lg:px-12 max-w-7xl mx-auto pb-24 lg:pb-40">
+    <div class="border-t border-border pt-16 lg:pt-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <h2 class="text-3xl md:text-4xl font-heading font-medium leading-tight">
+        Thoughtful design for ambitious brands.
+      </h2>
+      <div>
+        <p class="text-secondary leading-relaxed mb-6">
+          We believe that great design emerges from a deep understanding of context — the people, the place, the purpose. Every project begins with listening and research before a single pixel is placed.
+        </p>
+        <p class="text-secondary leading-relaxed mb-8">
+          Our work spans brand identity, web design, editorial, packaging, environmental graphics, and motion. We bring the same rigor and care to every discipline.
+        </p>
+        <a href="/about" class="text-sm uppercase tracking-wide text-primary hover:text-secondary transition-colors">
+          About the Studio &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
