@@ -7,7 +7,7 @@ const allProjects = await getCollection("projects");
 const featuredProjects = allProjects
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 4);
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Home">
@@ -29,7 +29,7 @@ const featuredProjects = allProjects
         View All &rarr;
       </a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
       {featuredProjects.map((project) => (
         <ProjectCard
           title={project.data.title}
@@ -37,6 +37,7 @@ const featuredProjects = allProjects
           year={project.data.year}
           disciplines={project.data.disciplines}
           thumbnail={project.data.thumbnail}
+          comingSoon={project.data.comingSoon}
         />
       ))}
     </div>

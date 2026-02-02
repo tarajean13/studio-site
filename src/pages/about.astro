@@ -9,36 +9,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       We design with intention, build with craft.
     </h1>
     <p class="text-lg md:text-xl text-secondary max-w-2xl leading-relaxed">
-      Hyperreality Digital is an independent design practice founded on the belief that thoughtful, well-executed design has the power to shape how people experience the world around them.
+      Hyperreality Digital is a boutique digital agency founded on the belief that thoughtful, well-executed marketing has the power to shape how people experience the world around them.
     </p>
   </section>
 
   <!-- Philosophy -->
   <section class="px-6 lg:px-12 max-w-7xl mx-auto pb-16 lg:pb-24">
-    <div class="border-t border-border pt-16 lg:pt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-      <div>
-        <h2 class="text-sm uppercase tracking-wide text-muted mb-6">Philosophy</h2>
-        <p class="text-secondary leading-relaxed mb-6">
-          We approach every project as a collaboration. Great work doesn't happen in a vacuum — it emerges from honest conversations, shared curiosity, and a willingness to explore unexpected directions.
-        </p>
-        <p class="text-secondary leading-relaxed mb-6">
-          Our process is rooted in research and strategy, but we leave room for intuition and happy accidents. We believe that constraints breed creativity, and that the simplest solution is usually the strongest.
-        </p>
-        <p class="text-secondary leading-relaxed">
-          We're not interested in trends for their own sake. Instead, we aim to create work that feels both contemporary and enduring — design that grows more meaningful over time.
-        </p>
-      </div>
-      <div>
-        <h2 class="text-sm uppercase tracking-wide text-muted mb-6">Recognition</h2>
-        <ul class="space-y-3 text-secondary">
-          <li>Communication Arts — Award of Excellence</li>
-          <li>Type Directors Club — Certificate of Typographic Excellence</li>
-          <li>AIGA 365 — Design Effectiveness</li>
-          <li>D&AD — Wood Pencil, Branding</li>
-          <li>Awwwards — Site of the Day (x3)</li>
-          <li>It's Nice That — Featured</li>
-        </ul>
-      </div>
+    <div class="border-t border-border pt-16 lg:pt-24 max-w-2xl">
+      <h2 class="text-sm uppercase tracking-wide text-muted mb-6">Philosophy</h2>
+      <p class="text-secondary leading-relaxed mb-6">
+        We approach every project as a collaboration. Great work doesn't happen in a vacuum. It emerges from honest conversations, shared curiosity, and a willingness to explore unexpected directions.
+      </p>
+      <p class="text-secondary leading-relaxed mb-6">
+        Our process is rooted in research and strategy, but we leave room for intuition and happy accidents. We believe that constraints breed creativity, and that the simplest solution is usually the strongest.
+      </p>
+      <p class="text-secondary leading-relaxed">
+        We're not interested in trends for their own sake. Instead, we aim to create work that feels both contemporary and enduring, that grows more meaningful over time.
+      </p>
     </div>
   </section>
 
@@ -46,19 +33,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="px-6 lg:px-12 max-w-7xl mx-auto pb-16 lg:pb-24">
     <div class="border-t border-border pt-16 lg:pt-24">
       <h2 class="text-sm uppercase tracking-wide text-muted mb-12">Team</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-        {[
-          { name: "Alex Chen", role: "Creative Director" },
-          { name: "Maya Torres", role: "Design Lead" },
-          { name: "Jordan Park", role: "Developer" },
-          { name: "Sam Okafor", role: "Motion Designer" },
-        ].map((member) => (
-          <div>
-            <div class="aspect-[3/4] bg-border mb-4"></div>
-            <h3 class="font-heading text-lg font-medium">{member.name}</h3>
-            <p class="text-sm text-secondary mt-1">{member.role}</p>
-          </div>
-        ))}
+      <div class="max-w-xs">
+        <div class="aspect-[3/4] overflow-hidden bg-border mb-4">
+          <img src="/images/tara-pfp-website.png" alt="Tara Everding" class="w-full h-full object-cover" />
+        </div>
+        <h3 class="font-heading text-lg font-medium">Tara Everding</h3>
+        <p class="text-sm text-secondary mt-1">Founder & Creative Director</p>
       </div>
     </div>
   </section>
@@ -67,31 +47,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="px-6 lg:px-12 max-w-7xl mx-auto pb-16 lg:pb-24">
     <div class="border-t border-border pt-16 lg:pt-24">
       <h2 class="text-sm uppercase tracking-wide text-muted mb-12">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
         {[
           {
             title: "Brand Identity",
-            items: ["Visual Identity Systems", "Logo Design", "Brand Guidelines", "Naming & Verbal Identity"],
-          },
-          {
-            title: "Digital Design",
-            items: ["Website Design & Development", "UI/UX Design", "E-commerce", "Digital Campaigns"],
-          },
-          {
-            title: "Print & Editorial",
-            items: ["Publication Design", "Packaging", "Art Direction", "Typography"],
-          },
-          {
-            title: "Environmental",
-            items: ["Wayfinding Systems", "Exhibition Design", "Signage", "Environmental Graphics"],
-          },
-          {
-            title: "Motion",
-            items: ["Brand Films", "Animation", "Social Content", "Titles & Credits"],
+            items: ["Visual Identity Systems", "Logo Design", "Brand Guidelines", "Typography"],
           },
           {
             title: "Strategy",
-            items: ["Brand Strategy", "Creative Direction", "Content Strategy", "Workshop Facilitation"],
+            items: ["Brand Strategy", "Creative Direction", "Content Strategy", "Market Research"],
+          },
+          {
+            title: "Digital Design",
+            items: ["Website Design & Development", "Swag Design and Packaging", "E-commerce", "Digital Campaigns"],
+          },
+          {
+            title: "Marketing",
+            items: ["Social Media Management", "Social Content", "Marketing Strategy", "Video Editing", "Podcast Production", "Newsletter Creation", "Blog and Article Writing"],
           },
         ].map((service) => (
           <div>

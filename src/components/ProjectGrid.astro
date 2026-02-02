@@ -2,12 +2,13 @@
 import ProjectCard from "./ProjectCard.astro";
 
 interface Project {
-  slug: string;
+  id: string;
   data: {
     title: string;
     year: number;
     disciplines: string[];
     thumbnail: string;
+    comingSoon?: boolean;
   };
 }
 
@@ -22,10 +23,11 @@ const { projects } = Astro.props;
   {projects.map((project) => (
     <ProjectCard
       title={project.data.title}
-      slug={project.slug}
+      slug={project.id}
       year={project.data.year}
       disciplines={project.data.disciplines}
       thumbnail={project.data.thumbnail}
+      comingSoon={project.data.comingSoon}
     />
   ))}
 </div>

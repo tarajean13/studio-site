@@ -4,17 +4,19 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { slug: project.id },
-    props: { project },
-  }));
+  return projects
+    .filter((p) => !p.data.comingSoon)
+    .map((project) => ({
+      params: { slug: project.id },
+      props: { project },
+    }));
 }
 
 const { project } = Astro.props;
 const { Content } = await render(project);
 
 const allProjects = await getCollection("projects");
-const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
+const sorted = allProjects.filter((p) => !p.data.comingSoon).sort((a, b) => a.data.order - b.data.order);
 const currentIndex = sorted.findIndex((p) => p.id === project.id);
 const prevProject = currentIndex > 0 ? sorted[currentIndex - 1] : null;
 const nextProject = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
@@ -25,7 +27,7 @@ const nextProject = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] 
   <section class="w-full">
     <div class="aspect-[16/7] overflow-hidden bg-border">
       <img
-        src={project.data.thumbnail}
+        src={project.data.heroImage || project.data.thumbnail}
         alt={project.data.title}
         class="w-full h-full object-cover"
       />
